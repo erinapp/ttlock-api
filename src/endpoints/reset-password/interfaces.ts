@@ -9,4 +9,5 @@ export interface ParameterInterface {
 export interface ResponseInterface {
     errcode: number;
     errmsg: string;
+    description: string;
 }
