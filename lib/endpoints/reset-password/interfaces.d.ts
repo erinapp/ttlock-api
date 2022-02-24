@@ -5,7 +5,8 @@ export interface ParameterInterface {
     password: string;
     date: string;
 }
-
 export interface ResponseInterface {
-    username: string;
+    errcode: number;
+    errmsg: string;
+    description: string;
 }
