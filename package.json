@@ -1,0 +1,20 @@
+{
+  "name": "ttlock-api",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "4.5.5"
+  },
+  "dependencies": {
+    "@types/node-fetch": "2.6.1",
+    "node-fetch": "2.6.1"
+  }
+}
