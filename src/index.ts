@@ -1,11 +1,13 @@
-import { MapTTLockAPIs, APIConfigsType } from "./helpers/api-mapper"
+import Client, { ClientInterface } from "./client"
 
-export const APIConfigs: APIConfigsType = {
-}  
+import user from "./resources/user"
 
-export type APIParamsType = {
+export function createClient(parameters: ClientInterface) {
+  const client = new Client(parameters)
+
+  const api = {
+    user: user(client)
+  }
+
+  return api
 }
-
-const TTLockAPI = MapTTLockAPIs()
-
-export default TTLockAPI
