@@ -69,5 +69,18 @@ export interface LockType {
             lockId: number;
             keyId: number;
         }
+    };
+    TransferLock: {
+        Parameters: {
+            accessToken: string;
+            receiverUsername: string;
+            lockIdList: string;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
     }
 }

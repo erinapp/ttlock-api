@@ -1,19 +1,18 @@
-import Client from "../client";
+import Client from "../client"
+import type { LockType } from '../types'
 
-import { LockType } from '../types';
+type InitType = LockType['Init']
+type TransferType = LockType['TransferLock']
 
-export default (client: Client) => ({
-    init: async(parameters: LockType['Init']['Parameters']) => {
-        const { clientId } = client.data!
-
+export default ({ request }: Client) => ({
+    init: (parameters: InitType['Parameters']): Promise<InitType['Response']> => {
         const endpoint = '/v3/lock/initialize'
-        const body = {
-            clientId,
-            ...parameters
-        }
     
-        const response = await client.request(endpoint, body) as LockType['Init']['Response']
+        return request<InitType['Response']>(endpoint, parameters)
+    },
+    transferLock: (parameters: TransferType['Parameters']): Promise<TransferType['Response']> => {
+        const endpoint = '/v3/lock/transfer'
     
-        return response
+        return request<TransferType['Response']>(endpoint, parameters)
     },
 })

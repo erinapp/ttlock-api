@@ -9,7 +9,17 @@ export default class Client {
         this.data = data
     }
 
-    async request(endpoint: string, body: any) {
+    async request<T = unknown>(endpoint: string, parameters: any, isOauth = false): Promise<T> {
+        const { clientId } = this.data!
+
+        const body = parameters
+
+        if (isOauth) {
+            body['client_id'] = clientId
+        } else {
+            body['clientId'] = clientId
+        }
+
         const response = await fetch(`${this.data?.baseUrl}${endpoint}`, {
           method: 'POST',
           body: new URLSearchParams(body)
