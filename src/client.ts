@@ -1,22 +1,18 @@
 import fetch from 'node-fetch'
 
-export interface ClientInterface {
-    baseUrl: string;
-    clientId: string;
-    clientSecret: string;
-  }
+import { ClientType } from './types'
 
 export default class Client {
-    data?: ClientInterface
+    data?: ClientType
 
-    constructor(data: ClientInterface) {
+    constructor(data: ClientType) {
         this.data = data
     }
 
-    async request(endpoint: string, parameters: any) {
+    async request(endpoint: string, body: any) {
         const response = await fetch(`${this.data?.baseUrl}${endpoint}`, {
           method: 'POST',
-          body: new URLSearchParams(parameters)
+          body: new URLSearchParams(body)
         })
       
         const responseJSON = await response.json()
