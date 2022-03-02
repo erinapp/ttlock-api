@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 
-import { ClientType } from './types'
+import type { ClientType } from './types'
 
 export default class Client {
     data?: ClientType
