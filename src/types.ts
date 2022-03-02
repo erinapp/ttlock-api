@@ -55,3 +55,19 @@ export interface UserType {
         }
     }
 }
+
+export interface LockType {
+    Init: {
+        Parameters: {
+            accessToken: string;
+            date: number;
+            lockData: string;
+            lockAlias?: string;
+            nbInitSuccess?: number;
+        };
+        Response: {
+            lockId: number;
+            keyId: number;
+        }
+    }
+}
