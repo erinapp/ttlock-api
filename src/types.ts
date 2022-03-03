@@ -358,3 +358,98 @@ export interface LockType {
         }
     }
 }
+
+export interface EkeyType {
+    Send: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            receiverUsername: string;
+            keyName: string;
+            startDate: number;
+            endDate: number;
+            date: number;
+            remarks?: string;
+            remoteEnable?: number;
+            createUser?: number;
+        };
+        Response: {
+            keyId: number;
+            errcode: number; 
+            errmsg: string;
+        }
+    };
+    List: {
+        Parameters: {
+            accessToken: string;
+            pageNo: number;
+            pageSize: number;
+            date: number;
+            lockAlias?: string;
+            groupId?: number;
+        };
+        Response: {
+            keyId: number;
+            lockData: string;
+            lockId: number;
+            userType: string;
+            keyStatus: string;
+            lockName: string;
+            lockAlias: string;
+            lockMac: string;
+            noKeyPwd: string;
+            deletePwd: string;
+            electricQuantity: number;
+            lockVersion: {
+                protocolType: number;
+                protocolVersion: number;
+                scene: number;
+                groupId: number;
+                orgId: number;
+            };
+            startDate: number;
+            endDate: number;
+            remarks: string;
+            keyRight: number;
+            keyboardPwdVersion: number;
+            specialValue: number;
+            remoteEnable: number;
+            groupId: number;
+            groupName: string;
+        }
+    };
+    GetOneEkey: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            keyId: number;
+            lockData: string;
+            lockId: number;
+            userType: string;
+            keyStatus: string;
+            lockName: string;
+            lockAlias: string;
+            lockMac: string;
+            noKeyPwd: string;
+            deletePwd: string;
+            electricQuantity: number;
+            lockVersion: {
+                protocolType: number;
+                protocolVersion: number;
+                scene: number;
+                groupId: number;
+                orgId: number;
+            };
+            startDate: number;
+            endDate: number;
+            remarks: string;
+            keyRight: number;
+            keyboardPwdVersion: number;
+            specialValue: number;
+            remoteEnable: number;
+        }
+    }
+}

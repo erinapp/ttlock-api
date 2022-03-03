@@ -100,5 +100,3 @@ export default ({ request }: Client) => ({
         return request<UpdateLockDataType['Response']>(endpoint, parameters)
     },
 })
-
-// .getPassageModeConfig().then(res => res.)
