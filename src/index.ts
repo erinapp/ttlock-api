@@ -1,8 +1,7 @@
 import Client from "./client"
 
-import { ClientType } from "./types"
-
 import user from "./resources/user"
+import type { ClientType } from "./types"
 
 export function createClient(parameters: ClientType) {
   const client = new Client(parameters)

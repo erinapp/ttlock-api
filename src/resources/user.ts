@@ -1,70 +1,60 @@
 import { MD5 } from 'crypto-js';
 
 import Client from "../client";
+import type { UserType } from '../types';
 
-import { UserType } from '../types';
+type RegisterType = UserType['Register']
+type ResetPasswordType = UserType['ResetPassword']
+type GetUserListType = UserType['GetUserList']
+type DeleteUserType = UserType['DeleteUser']
 
-export default (client: Client) => ({
-    register: async(parameters: UserType['Register']['Parameters']) => {
-        const { username, password, date } = parameters
-        const { clientId, clientSecret } = client.data!
+export default ({ request, data }: Client) => ({
+    register: (parameters: RegisterType['Parameters']): Promise<RegisterType['Response']> => {
+        const { password, } = parameters
+        const { clientSecret } = data!
 
         const endpoint = '/v3/user/register'
         const body = {
-            clientId,
             clientSecret,
-            username,
+            ...parameters,
             password: MD5(password),
-            date
         }
     
-        const response = await client.request(endpoint, body) as UserType['Register']['Response']
-    
-        return response
+        return request(endpoint, body)
     },
-    resetPassword: async(parameters: UserType['ResetPassword']['Parameters']) => {
-        const { username, password, date } = parameters
-        const { clientId, clientSecret } = client.data!
+    resetPassword: (parameters: ResetPasswordType['Parameters']): Promise<ResetPasswordType['Response']>  => {
+        const { password } = parameters
+        const { clientSecret } = data!
 
         const endpoint = '/v3/user/resetPassword'
         const body = {
-            clientId,
             clientSecret,
-            username,
+            ...parameters,
             password: MD5(password),
-            date
         }
     
-        const response = await client.request(endpoint, body) as UserType['ResetPassword']['Response']
-    
-        return response
+        return request(endpoint, body)
     },
-    getUserList: async(parameters: UserType['GetUserList']['Parameters']) => {
-        const { clientId, clientSecret } = client.data!
+    getUserList: async(parameters: GetUserListType['Parameters']): Promise<GetUserListType['Response']> => {
+        const { clientSecret } = data!
 
         const endpoint = '/v3/user/list'
         const body = {
-            clientId,
             clientSecret,
             ...parameters
         }
 
-        const response = await client.request(endpoint, body) as UserType['GetUserList']['Response']
-
-        return response
+        return request(endpoint, body)
     },
-    deleteUser: async(parameters: UserType['DeleteUser']['Parameters']) => {
-        const { clientId, clientSecret } = client.data!
+    deleteUser: async(parameters: DeleteUserType['Parameters']): Promise<DeleteUserType['Response']> => {
+        const { clientSecret } = data!
 
         const endpoint = '/v3/user/delete'
         const body = {
-            clientId,
             clientSecret,
             ...parameters
         }
 
-        const response = await client.request(endpoint, body) as UserType['DeleteUser']['Response']
-
-        return response
+        return request(endpoint, body)
     }
 })
