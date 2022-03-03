@@ -595,3 +595,202 @@ export interface PasscodeType {
         }
     }
 }
+
+export interface GatewayType {
+    GetUserID: {
+        Parameters: {
+            accessToken: string;
+            date: number;
+        };
+        Response: {
+            uid: number;
+        }
+    };
+    GetLockTime: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            date: number;
+        }
+    };
+    AdjustLockTime: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            date: number;
+        }
+    };
+    Unlock: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    Lock: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    GetOpenState: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            state: number;
+        }
+    };
+    Freeze: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    Unfreeze: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    GetLockStatus: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            status: number;
+        }
+    };
+    GetGatewayListOfAnAccount: {
+        Parameters: {
+            accessToken: string;
+            pageNo: number;
+            pageSize: number;
+            date: number;
+        };
+        Response: {
+            list: {
+                gatewayId: number;
+                gatewayMac: string;
+                gatewayVersion: number;
+                networkName: string;
+                lockNum: number;
+                isOnline: number;
+            }[]
+        }
+    };
+    GetGatewayListOfALock: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            date: number;
+        };
+        Response: {
+            list: {
+                gatewayId: number;
+                gatewayMac: string;
+                rssi: number;
+                rssiUpdateDate: number;
+            }[]
+        }
+    };
+    GetLockListOfGateway: {
+        Parameters: {
+            accessToken: string;
+            gatewayId: number;
+            date: number;
+        };
+        Response: {
+            list: {
+                lockId: number;
+                lockMac: string;
+                lockName: string;
+                lockAlias: string;
+                rssi: number;
+                updateDate: number;
+            }[]
+        }
+    };
+    QueryGatewayInitStatus: {
+        Parameters: {
+            accessToken: string;
+            gatewayNetMac: string;
+            date: number;
+        };
+        Response: {
+            gatewayId: number;
+        }
+    };
+    UploadGatewayDetailInfo: {
+        Parameters: {
+            accessToken: string;
+            gatewayId: number;
+            modelNum: string;
+            hardwareRevision: string;
+            firmwareRevision: string;
+            networkName: string;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    GatewayUpgradeCheck: {
+        Parameters: {
+            accessToken: string;
+            gatewayId: number;
+            date: number;
+        };
+        Response: {
+            needUpgrade: number;
+            firmwareInfo: string;
+        }
+    };
+    SetGatewayIntoUpgradeMode: {
+        Parameters: {
+            accessToken: string;
+            gatewayId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    }
+}
