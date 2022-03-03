@@ -529,3 +529,69 @@ export interface EkeyType {
         }
     }
 }
+
+export interface PasscodeType {
+    Get: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            keyboardPwdVersion: number;
+            keyboardPwdType: number;
+            date: number;
+            keyboardPwdName?: string;
+            startDate?: number;
+            endDate?: number;
+        };
+        Response: {
+            keyboardPwd: string;
+            keyboardPwdId: number;
+        }
+    };
+    Delete: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            keyboardPwdId: number;
+            date: number;
+            deleteType?: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    Change: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            keyboardPwdId: number;
+            date: number;
+            keyboardPwdName?: string;
+            newKeyboardPwd?: string;
+            startDate?: number;
+            endDate?: number;
+            changeType?: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    Add: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            keyboardPwd: string;
+            startDate: number;
+            endDate: number;
+            date: number;
+            keyboardPwdName?: string;
+            addType?: string;
+        };
+        Response: {
+            keyboardPwdId: number;
+        }
+    }
+}
