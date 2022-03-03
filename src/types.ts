@@ -451,5 +451,81 @@ export interface EkeyType {
             specialValue: number;
             remoteEnable: number;
         }
+    };
+    Delete: {
+        Parameters: {
+            accessToken: string;
+            keyId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    Freeze: {
+        Parameters: {
+            accessToken: string;
+            keyId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    Unfreeze: {
+        Parameters: {
+            accessToken: string;
+            keyId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    ChangeValidTime: {
+        Parameters: {
+            accessToken: string;
+            keyId: number;
+            startDate: number;
+            endDate: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    Authorize: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            keyId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    };
+    Unauthorize: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            keyId: number;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
     }
 }
