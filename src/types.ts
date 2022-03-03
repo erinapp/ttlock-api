@@ -794,3 +794,45 @@ export interface GatewayType {
         }
     }
 }
+
+export interface UnlockRecordsType {
+    GetList: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            pageNo: number;
+            pageSize: number;
+            date: number;
+            startDate?: number;
+            endDate?: number;
+        };
+        Response: {
+            list: {
+                lockId: number;
+                recordType: number;
+                success: number;
+                username: string;
+                keyboardPwd: string;
+                lockDate: number;
+                serverDate: number;
+            }[];
+            pageNo: number;
+            pageSize: number;
+            pages: number;
+            total: number;
+        }
+    };
+    Upload: {
+        Parameters: {
+            accessToken: string;
+            lockId: number;
+            records: string;
+            date: number;
+        };
+        Response: {
+            errcode: number;
+            errmsg: string;
+            description: string;
+        }
+    }
+}
