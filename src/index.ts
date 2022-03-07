@@ -11,7 +11,10 @@ import type { ClientType } from "./types"
 export function createClient(parameters: ClientType) {
   const client = new Client(parameters)
 
+  const { data } = client
+
   const api = {
+    data,
     user: user(client),
     lock: lock(client),
     ekey: ekey(client),

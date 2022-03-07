@@ -8,5 +8,5 @@
       "lib": ["es2021", "dom"]
     },
     "include": ["src"],
-    "exclude": ["node_modules", "**/__tests__/*"]
-  }
+    "exclude": ["node_modules", "**/__tests__/*"],
+}
