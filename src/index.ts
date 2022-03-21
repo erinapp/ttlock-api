@@ -8,6 +8,8 @@ import gateway from "./resources/gateway"
 import unlockRecords from "./resources/unlock-records"
 import type { ClientType } from "./types"
 
+export * from './types'
+
 export function createClient(parameters: ClientType) {
   const client = new Client(parameters)
 
