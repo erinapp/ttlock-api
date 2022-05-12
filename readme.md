@@ -1,4 +1,6 @@
 # TTLock API
+Unofficial TTLock API Wrapper.
+See more at [TTLock](https://open.ttlock.com/doc/api/)
 
 ## Installation
 
