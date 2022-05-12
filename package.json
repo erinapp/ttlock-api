@@ -1,7 +1,7 @@
 {
   "name": "ttlock-api",
   "version": "0.0.1",
-  "description": "## Installation",
+  "description": "Unofficial TTLock API Wrapper",
   "scripts": {
     "build": "tsc",
     "test": "jest"
