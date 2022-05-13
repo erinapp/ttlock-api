@@ -1,6 +1,6 @@
 {
   "name": "ttlock-api",
-  "version": "0.0.1",
+  "version": "0.0.11",
   "description": "Unofficial TTLock API Wrapper",
   "scripts": {
     "build": "tsc",
@@ -13,13 +13,13 @@
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",
     "@types/jest": "^27.4.1",
-    "@types/node-fetch": "2.6.1",
+    "@types/node-fetch": "^2.6.1",
     "jest": "^27.5.1",
     "typescript": "4.5.5"
   },
   "dependencies": {
     "crypto-js": "^4.1.1",
-    "node-fetch": "2.6.1",
+    "node-fetch": "^3.2.4",
     "ts-jest": "^27.1.3"
   },
   "directories": {
