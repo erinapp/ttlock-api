@@ -28,7 +28,7 @@ export default class Client {
           body: new URLSearchParams(body)
         })
       
-        const responseJSON = await response.json()
+        const responseJSON:any = await response.json()
       
         return responseJSON
     }
