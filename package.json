@@ -1,8 +1,8 @@
 {
   "name": "ttlock-api",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Unofficial TTLock API Wrapper",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "test": "jest"
