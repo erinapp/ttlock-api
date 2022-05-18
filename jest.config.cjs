@@ -5,7 +5,7 @@
 
 module.exports = {
   preset: 'ts-jest',
-
+  transform:{},
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 

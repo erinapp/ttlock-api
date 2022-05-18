@@ -21,7 +21,7 @@ export default (client: Client) => ({
             client_secret: clientSecret,
             password: MD5(password).toString(),
         }
-    
+
         return client.request<GetAccessTokenType['Response']>(endpoint, body, true)
     },
     refreshToken: (parameters: RefreshToken['Parameters']): Promise<RefreshToken['Response']> => {
@@ -43,7 +43,7 @@ export default (client: Client) => ({
         const body = {
             clientSecret,
             ...parameters,
-            password: MD5(password),
+            password: MD5(password).toString(),
         }
     
         return client.request<RegisterType['Response']>(endpoint, body)
