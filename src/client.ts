@@ -22,6 +22,9 @@ export default class Client {
 
         const response = await fetch(`${this.data?.baseUrl}${endpoint}`, {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
           body: new URLSearchParams(body)
         })
       
