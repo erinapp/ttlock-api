@@ -1,19 +1,20 @@
-import Client from "./client"
+import Client from "./client";
 
-import user from "./resources/user"
-import lock from "./resources/lock"
-import ekey from "./resources/ekey"
-import passcode from "./resources/passcode"
-import gateway from "./resources/gateway"
-import unlockRecords from "./resources/unlock-records"
-import type { ClientType } from "./types"
+import user from "./resources/user";
+import lock from "./resources/lock";
+import ekey from "./resources/ekey";
+import passcode from "./resources/passcode";
+import gateway from "./resources/gateway";
+import unlockRecords from "./resources/unlock-records";
+import fingerprint from "./resources/fingerprint";
+import type { ClientType } from "./types";
 
-export * from "./types"
+export * from "./types";
 
 export function createClient(parameters: ClientType) {
-  const client = new Client(parameters)
+  const client = new Client(parameters);
 
-  const { data } = client
+  const { data } = client;
 
   const api = {
     data,
@@ -22,8 +23,9 @@ export function createClient(parameters: ClientType) {
     ekey: ekey(client),
     passcode: passcode(client),
     gateway: gateway(client),
-    unlockRecords: unlockRecords(client)
-  }
+    unlockRecords: unlockRecords(client),
+    fingerprint: fingerprint(client),
+  };
 
-  return api
+  return api;
 }
