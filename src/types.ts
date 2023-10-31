@@ -1,838 +1,943 @@
 export interface ClientType {
-    baseUrl: string;
-    clientId: string;
-    clientSecret: string;
+  baseUrl: string;
+  clientId: string;
+  clientSecret: string;
 }
 
 export interface UserType {
-    GetAccessToken: {
-        Parameters: {
-            username: string;
-            password: string;
-        };
-        Response: {
-            access_token: string;
-            uid: number;
-            expires_in: number;
-            scope: string;
-            refresh_token: string;
-        }
+  GetAccessToken: {
+    Parameters: {
+      username: string;
+      password: string;
     };
-    RefreshToken: {
-        Parameters: {
-            grant_type: string;
-            refresh_token: string;
-        };
-        Response: {
-            access_token: string;
-            expires_in: number;
-            scope: string;
-            refresh_token: string;
-        }
+    Response: {
+      access_token: string;
+      uid: number;
+      expires_in: number;
+      scope: string;
+      refresh_token: string;
     };
-    Register: {
-        Parameters: {
-            date: string;
-            password: string;
-            username: string;
-        };
-        Response: {
-            username: string;
-        }
-    },
-    ResetPassword: {
-        Parameters: {
-            date: string;
-            password: string;
-            username: string;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
-    },
-    GetUserList: {
-        Parameters: {
-            startDate: number;
-            endDate: number;
-            pageNo: number;
-            pageSize: number;
-            date: number;
-        };
-        Response: {
-            list: {
-                userId: string;
-                regtime: number;
-            }[];
-            pageNo: number;
-            pageSize: number;
-            pages: number;
-            total: number;
-        }
+  };
+  RefreshToken: {
+    Parameters: {
+      grant_type: string;
+      refresh_token: string;
     };
-    DeleteUser: {
-        Parameters: {
-            username: string;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
-    }
+    Response: {
+      access_token: string;
+      expires_in: number;
+      scope: string;
+      refresh_token: string;
+    };
+  };
+  Register: {
+    Parameters: {
+      date: string;
+      password: string;
+      username: string;
+    };
+    Response: {
+      username: string;
+    };
+  };
+  ResetPassword: {
+    Parameters: {
+      date: string;
+      password: string;
+      username: string;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  GetUserList: {
+    Parameters: {
+      startDate: number;
+      endDate: number;
+      pageNo: number;
+      pageSize: number;
+      date: number;
+    };
+    Response: {
+      list: {
+        userId: string;
+        regtime: number;
+      }[];
+      pageNo: number;
+      pageSize: number;
+      pages: number;
+      total: number;
+    };
+  };
+  DeleteUser: {
+    Parameters: {
+      username: string;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
 }
 
 export interface LockType {
-    Init: {
-        Parameters: {
-            accessToken: string;
-            date: number;
-            lockData: string;
-            lockAlias?: string;
-            nbInitSuccess?: number;
-        };
-        Response: {
-            lockId: number;
-            keyId: number;
-        }
+  Init: {
+    Parameters: {
+      accessToken: string;
+      date: number;
+      lockData: string;
+      lockAlias?: string;
+      nbInitSuccess?: number;
     };
-    List: {
-        Parameters: {
-            accessToken: string;
-            pageNo: number;
-            pageSize: number;
-            date: number;
-            lockAlias?: string;
-            type?: number;
-            groupId?: number;
-        };
-        Response: {
-            list: {
-                lockId: number;
-                date: number;
-                lockName: string;
-                lockAlias: string;
-                lockMac: string;
-                electricQuantity: number;
-                keyboardPwdVersion: number;
-                specialValue: number;
-                hasGateway: number;
-                lockData: string;
-                groupId: number;
-                groupName: string;
-            }[]
-        }
-    },
-    Detail: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            lockId: number;
-            lockName: string;
-            lockAlias: string;
-            lockMac: string;
-            lockKey: string;
-            lockFlagPos: number;
-            adminPwd: string;
-            noKeyPwd: string;
-            deletePwd: string;
-            aesKeyStr: string;
-            lockVersion: {
-                protocolType: number;
-                protocolVersion: number;
-                scene: number;
-                groupId: number;
-                orgId: number;
-            };
-            keyboardPwdVersion: number;
-            electricQuantity: number;
-            specialValue: number;
-            timezoneRawOffset: number;
-            modelNum: string;
-            hardwareRevision: string;
-            firmwareRevision: string;
-            date: number;
-        }
+    Response: {
+      lockId: number;
+      keyId: number;
     };
-    CommonEkeys: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            pageNo: number;
-            pageSize: number;
-            date: number;
-        };
-        Response: {
-            list: {
-                keyId: number;
-                lockId: number;
-                openid: number;
-                username: string;
-                keyName: string;
-                keyStatus: string;
-                startDate: number;
-                endDate: number;
-                keyRight: string;
-                senderUsername: string;
-                remarks: string;
-                date: number;
-            }[]
-        }
+  };
+  List: {
+    Parameters: {
+      accessToken: string;
+      pageNo: number;
+      pageSize: number;
+      date: number;
+      lockAlias?: string;
+      type?: number;
+      groupId?: number;
     };
-    DeleteAllKey: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      list: {
+        lockId: number;
+        date: number;
+        lockName: string;
+        lockAlias: string;
+        lockMac: string;
+        electricQuantity: number;
+        keyboardPwdVersion: number;
+        specialValue: number;
+        hasGateway: number;
+        lockData: string;
+        groupId: number;
+        groupName: string;
+      }[];
     };
-    GetAllCreatedPasscodes: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            pageNo: number;
-            pageSize: number;
-            date: number;
-        };
-        Response: {
-            list: {
-                keyboardPwdId: number;
-                lockId: number;
-                keyboardPwd: string;
-                keyboardPwdName: string;
-                keyboardPwdVersion: number;
-                keyboardPwdType: number;
-                startDate: number;
-                endDate: number;
-                sendDate: number;
-                isCustom: number;
-                status: number;
-                senderUsername: string;
-            }[]
-        }
+  };
+  Detail: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    ChangeSuperPasscode: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            password: string;
-            date: number;
-            changeType?: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      lockId: number;
+      lockName: string;
+      lockAlias: string;
+      lockMac: string;
+      lockKey: string;
+      lockFlagPos: number;
+      adminPwd: string;
+      noKeyPwd: string;
+      deletePwd: string;
+      aesKeyStr: string;
+      lockVersion: {
+        protocolType: number;
+        protocolVersion: number;
+        scene: number;
+        groupId: number;
+        orgId: number;
+      };
+      keyboardPwdVersion: number;
+      electricQuantity: number;
+      specialValue: number;
+      timezoneRawOffset: number;
+      modelNum: string;
+      hardwareRevision: string;
+      firmwareRevision: string;
+      date: number;
     };
-    ChangeLockName: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            lockAlias: string;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  CommonEkeys: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      pageNo: number;
+      pageSize: number;
+      date: number;
     };
-    UploadLockBattery: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            electricQuantity: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      list: {
+        keyId: number;
+        lockId: number;
+        openid: number;
+        username: string;
+        keyName: string;
+        keyStatus: string;
+        startDate: number;
+        endDate: number;
+        keyRight: string;
+        senderUsername: string;
+        remarks: string;
+        date: number;
+      }[];
     };
-    Transfer: {
-        Parameters: {
-            accessToken: string;
-            receiverUsername: string;
-            lockIdList: string;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  DeleteAllKey: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    GetElectricQuantity: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            electricQuantity: number;
-        }
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
     };
-    Delete: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  GetAllCreatedPasscodes: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      pageNo: number;
+      pageSize: number;
+      date: number;
     };
-    SetAutoLockTime: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            seconds: number;
-            type: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      list: {
+        keyboardPwdId: number;
+        lockId: number;
+        keyboardPwd: string;
+        keyboardPwdName: string;
+        keyboardPwdVersion: number;
+        keyboardPwdType: number;
+        startDate: number;
+        endDate: number;
+        sendDate: number;
+        isCustom: number;
+        status: number;
+        senderUsername: string;
+      }[];
     };
-    ConfigPassageMode: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            passageMode: number;
-            type: number;
-            date: number;
-            startDate?: number;
-            endDate?: number;
-            isAllDay?: number;
-            weekDays?: number[];
-            autoUnlock?: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  ChangeSuperPasscode: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      password: string;
+      date: number;
+      changeType?: number;
     };
-    GetPassageModeConfig: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            passageMode: number;
-            startDate: number;
-            endDate: number;
-            isAllDay: number;
-            weekDays: number[];
-            autoUnlock: number;
-        }
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
     };
-    UpdateLockData: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            lockData: string;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
-    }
+  };
+  ChangeLockName: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      lockAlias: string;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  UploadLockBattery: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      electricQuantity: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  Transfer: {
+    Parameters: {
+      accessToken: string;
+      receiverUsername: string;
+      lockIdList: string;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  GetElectricQuantity: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
+    };
+    Response: {
+      electricQuantity: number;
+    };
+  };
+  Delete: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  SetAutoLockTime: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      seconds: number;
+      type: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  ConfigPassageMode: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      passageMode: number;
+      type: number;
+      date: number;
+      startDate?: number;
+      endDate?: number;
+      isAllDay?: number;
+      weekDays?: number[];
+      autoUnlock?: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  GetPassageModeConfig: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
+    };
+    Response: {
+      passageMode: number;
+      startDate: number;
+      endDate: number;
+      isAllDay: number;
+      weekDays: number[];
+      autoUnlock: number;
+    };
+  };
+  UpdateLockData: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      lockData: string;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
 }
 
 export interface EkeyType {
-    Send: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            receiverUsername: string;
-            keyName: string;
-            startDate: number;
-            endDate: number;
-            date: number;
-            remarks?: string;
-            remoteEnable?: number;
-            createUser?: number;
-        };
-        Response: {
-            keyId: number;
-            errcode: number; 
-            errmsg: string;
-        }
+  Send: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      receiverUsername: string;
+      keyName: string;
+      startDate: number;
+      endDate: number;
+      date: number;
+      remarks?: string;
+      remoteEnable?: number;
+      createUser?: number;
     };
-    List: {
-        Parameters: {
-            accessToken: string;
-            pageNo: number;
-            pageSize: number;
-            date: number;
-            lockAlias?: string;
-            groupId?: number;
-        };
-        Response: {
-            keyId: number;
-            lockData: string;
-            lockId: number;
-            userType: string;
-            keyStatus: string;
-            lockName: string;
-            lockAlias: string;
-            lockMac: string;
-            noKeyPwd: string;
-            deletePwd: string;
-            electricQuantity: number;
-            lockVersion: {
-                protocolType: number;
-                protocolVersion: number;
-                scene: number;
-                groupId: number;
-                orgId: number;
-            };
-            startDate: number;
-            endDate: number;
-            remarks: string;
-            keyRight: number;
-            keyboardPwdVersion: number;
-            specialValue: number;
-            remoteEnable: number;
-            groupId: number;
-            groupName: string;
-        }
+    Response: {
+      keyId: number;
+      errcode: number;
+      errmsg: string;
     };
-    GetOneEkey: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            keyId: number;
-            lockData: string;
-            lockId: number;
-            userType: string;
-            keyStatus: string;
-            lockName: string;
-            lockAlias: string;
-            lockMac: string;
-            noKeyPwd: string;
-            deletePwd: string;
-            electricQuantity: number;
-            lockVersion: {
-                protocolType: number;
-                protocolVersion: number;
-                scene: number;
-                groupId: number;
-                orgId: number;
-            };
-            startDate: number;
-            endDate: number;
-            remarks: string;
-            keyRight: number;
-            keyboardPwdVersion: number;
-            specialValue: number;
-            remoteEnable: number;
-        }
+  };
+  List: {
+    Parameters: {
+      accessToken: string;
+      pageNo: number;
+      pageSize: number;
+      date: number;
+      lockAlias?: string;
+      groupId?: number;
     };
-    Delete: {
-        Parameters: {
-            accessToken: string;
-            keyId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      keyId: number;
+      lockData: string;
+      lockId: number;
+      userType: string;
+      keyStatus: string;
+      lockName: string;
+      lockAlias: string;
+      lockMac: string;
+      noKeyPwd: string;
+      deletePwd: string;
+      electricQuantity: number;
+      lockVersion: {
+        protocolType: number;
+        protocolVersion: number;
+        scene: number;
+        groupId: number;
+        orgId: number;
+      };
+      startDate: number;
+      endDate: number;
+      remarks: string;
+      keyRight: number;
+      keyboardPwdVersion: number;
+      specialValue: number;
+      remoteEnable: number;
+      groupId: number;
+      groupName: string;
     };
-    Freeze: {
-        Parameters: {
-            accessToken: string;
-            keyId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  GetOneEkey: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    Unfreeze: {
-        Parameters: {
-            accessToken: string;
-            keyId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      keyId: number;
+      lockData: string;
+      lockId: number;
+      userType: string;
+      keyStatus: string;
+      lockName: string;
+      lockAlias: string;
+      lockMac: string;
+      noKeyPwd: string;
+      deletePwd: string;
+      electricQuantity: number;
+      lockVersion: {
+        protocolType: number;
+        protocolVersion: number;
+        scene: number;
+        groupId: number;
+        orgId: number;
+      };
+      startDate: number;
+      endDate: number;
+      remarks: string;
+      keyRight: number;
+      keyboardPwdVersion: number;
+      specialValue: number;
+      remoteEnable: number;
     };
-    ChangeValidTime: {
-        Parameters: {
-            accessToken: string;
-            keyId: number;
-            startDate: number;
-            endDate: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  Delete: {
+    Parameters: {
+      accessToken: string;
+      keyId: number;
+      date: number;
     };
-    Authorize: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            keyId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
     };
-    Unauthorize: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            keyId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
-    }
+  };
+  Freeze: {
+    Parameters: {
+      accessToken: string;
+      keyId: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  Unfreeze: {
+    Parameters: {
+      accessToken: string;
+      keyId: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  ChangeValidTime: {
+    Parameters: {
+      accessToken: string;
+      keyId: number;
+      startDate: number;
+      endDate: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  Authorize: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      keyId: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  Unauthorize: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      keyId: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
 }
 
 export interface PasscodeType {
-    Get: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            keyboardPwdVersion: number;
-            keyboardPwdType: number;
-            date: number;
-            keyboardPwdName?: string;
-            startDate?: number;
-            endDate?: number;
-        };
-        Response: {
-            keyboardPwd: string;
-            keyboardPwdId: number;
-        }
+  Get: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      keyboardPwdVersion: number;
+      keyboardPwdType: number;
+      date: number;
+      keyboardPwdName?: string;
+      startDate?: number;
+      endDate?: number;
     };
-    Delete: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            keyboardPwdId: number;
-            date: number;
-            deleteType?: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      keyboardPwd: string;
+      keyboardPwdId: number;
     };
-    Change: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            keyboardPwdId: number;
-            date: number;
-            keyboardPwdName?: string;
-            newKeyboardPwd?: string;
-            startDate?: number;
-            endDate?: number;
-            changeType?: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  Delete: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      keyboardPwdId: number;
+      date: number;
+      deleteType?: number;
     };
-    Add: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            keyboardPwd: string;
-            startDate: number;
-            endDate: number;
-            date: number;
-            keyboardPwdName?: string;
-            addType?: string;
-        };
-        Response: {
-            keyboardPwdId: number;
-        }
-    }
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  Change: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      keyboardPwdId: number;
+      date: number;
+      keyboardPwdName?: string;
+      newKeyboardPwd?: string;
+      startDate?: number;
+      endDate?: number;
+      changeType?: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  Add: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      keyboardPwd: string;
+      startDate: number;
+      endDate: number;
+      date: number;
+      keyboardPwdName?: string;
+      addType?: string;
+    };
+    Response: {
+      keyboardPwdId: number;
+    };
+  };
+}
+
+export type CyclicData = {
+  weekDay: number;
+  startTime: number;
+  endTime: number;
+};
+
+export interface FingerprintType {
+  Add: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      fingerprintNumber: number;
+      fingerprintType: number;
+      fingerprintName: string;
+      startDate: number;
+      endDate: number;
+      cyclicConfig: CyclicData[];
+      date: number;
+    };
+    Response: {
+      fingerprintId: number;
+    };
+  };
+  List: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      pageNo: number;
+      pageSize: number;
+      date: number;
+    };
+    Response: {
+      list: {
+        fingerprintId: number;
+        lockId: number;
+        fingerprintNumber: string;
+        fingerprintType: number;
+        fingerprintName: string;
+        startDate: number;
+        endDate: number;
+        cyclicConfig: CyclicData[];
+        createDate: number;
+        senderUsername: string;
+      }[];
+      pageNo: number;
+      pageSize: number;
+      pages: number;
+      total: number;
+    };
+  };
+  Delete: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      fingerprintId: number;
+      deleteType: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+    };
+  };
+  ChangeValidTime: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      fingerprintId: number;
+      startDate: number;
+      endDate: number;
+      cyclicConfig: CyclicData[];
+      changeType: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+    };
+  };
+  Clear: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+    };
+  };
+  Rename: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      fingerprintId: number;
+      fingerprintName: string;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+    };
+  };
 }
 
 export interface GatewayType {
-    GetUserID: {
-        Parameters: {
-            accessToken: string;
-            date: number;
-        };
-        Response: {
-            uid: number;
-        }
+  GetUserID: {
+    Parameters: {
+      accessToken: string;
+      date: number;
     };
-    GetLockTime: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            date: number;
-        }
+    Response: {
+      uid: number;
     };
-    AdjustLockTime: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            date: number;
-        }
+  };
+  GetLockTime: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    Unlock: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      date: number;
     };
-    Lock: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  AdjustLockTime: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    GetOpenState: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            state: number;
-        }
+    Response: {
+      date: number;
     };
-    Freeze: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+  };
+  Unlock: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    Unfreeze: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
     };
-    GetLockStatus: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            status: number;
-        }
+  };
+  Lock: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    GetGatewayListOfAnAccount: {
-        Parameters: {
-            accessToken: string;
-            pageNo: number;
-            pageSize: number;
-            date: number;
-        };
-        Response: {
-            list: {
-                gatewayId: number;
-                gatewayMac: string;
-                gatewayVersion: number;
-                networkName: string;
-                lockNum: number;
-                isOnline: number;
-            }[]
-        }
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
     };
-    GetGatewayListOfALock: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            date: number;
-        };
-        Response: {
-            list: {
-                gatewayId: number;
-                gatewayMac: string;
-                rssi: number;
-                rssiUpdateDate: number;
-            }[]
-        }
+  };
+  GetOpenState: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    GetLockListOfGateway: {
-        Parameters: {
-            accessToken: string;
-            gatewayId: number;
-            date: number;
-        };
-        Response: {
-            list: {
-                lockId: number;
-                lockMac: string;
-                lockName: string;
-                lockAlias: string;
-                rssi: number;
-                updateDate: number;
-            }[]
-        }
+    Response: {
+      state: number;
     };
-    QueryGatewayInitStatus: {
-        Parameters: {
-            accessToken: string;
-            gatewayNetMac: string;
-            date: number;
-        };
-        Response: {
-            gatewayId: number;
-        }
+  };
+  Freeze: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    UploadGatewayDetailInfo: {
-        Parameters: {
-            accessToken: string;
-            gatewayId: number;
-            modelNum: string;
-            hardwareRevision: string;
-            firmwareRevision: string;
-            networkName: string;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
     };
-    GatewayUpgradeCheck: {
-        Parameters: {
-            accessToken: string;
-            gatewayId: number;
-            date: number;
-        };
-        Response: {
-            needUpgrade: number;
-            firmwareInfo: string;
-        }
+  };
+  Unfreeze: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
     };
-    SetGatewayIntoUpgradeMode: {
-        Parameters: {
-            accessToken: string;
-            gatewayId: number;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
-    }
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  GetLockStatus: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
+    };
+    Response: {
+      status: number;
+    };
+  };
+  GetGatewayListOfAnAccount: {
+    Parameters: {
+      accessToken: string;
+      pageNo: number;
+      pageSize: number;
+      date: number;
+    };
+    Response: {
+      list: {
+        gatewayId: number;
+        gatewayMac: string;
+        gatewayVersion: number;
+        networkName: string;
+        lockNum: number;
+        isOnline: number;
+      }[];
+    };
+  };
+  GetGatewayListOfALock: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      date: number;
+    };
+    Response: {
+      list: {
+        gatewayId: number;
+        gatewayMac: string;
+        rssi: number;
+        rssiUpdateDate: number;
+      }[];
+    };
+  };
+  GetLockListOfGateway: {
+    Parameters: {
+      accessToken: string;
+      gatewayId: number;
+      date: number;
+    };
+    Response: {
+      list: {
+        lockId: number;
+        lockMac: string;
+        lockName: string;
+        lockAlias: string;
+        rssi: number;
+        updateDate: number;
+      }[];
+    };
+  };
+  QueryGatewayInitStatus: {
+    Parameters: {
+      accessToken: string;
+      gatewayNetMac: string;
+      date: number;
+    };
+    Response: {
+      gatewayId: number;
+    };
+  };
+  UploadGatewayDetailInfo: {
+    Parameters: {
+      accessToken: string;
+      gatewayId: number;
+      modelNum: string;
+      hardwareRevision: string;
+      firmwareRevision: string;
+      networkName: string;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
+  GatewayUpgradeCheck: {
+    Parameters: {
+      accessToken: string;
+      gatewayId: number;
+      date: number;
+    };
+    Response: {
+      needUpgrade: number;
+      firmwareInfo: string;
+    };
+  };
+  SetGatewayIntoUpgradeMode: {
+    Parameters: {
+      accessToken: string;
+      gatewayId: number;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
 }
 
 export interface UnlockRecordsType {
-    GetList: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            pageNo: number;
-            pageSize: number;
-            date: number;
-            startDate?: number;
-            endDate?: number;
-        };
-        Response: {
-            list: {
-                lockId: number;
-                recordType: number;
-                success: number;
-                username: string;
-                keyboardPwd: string;
-                lockDate: number;
-                serverDate: number;
-            }[];
-            pageNo: number;
-            pageSize: number;
-            pages: number;
-            total: number;
-        }
+  GetList: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      pageNo: number;
+      pageSize: number;
+      date: number;
+      startDate?: number;
+      endDate?: number;
     };
-    Upload: {
-        Parameters: {
-            accessToken: string;
-            lockId: number;
-            records: string;
-            date: number;
-        };
-        Response: {
-            errcode: number;
-            errmsg: string;
-            description: string;
-        }
-    }
+    Response: {
+      list: {
+        lockId: number;
+        recordType: number;
+        success: number;
+        username: string;
+        keyboardPwd: string;
+        lockDate: number;
+        serverDate: number;
+      }[];
+      pageNo: number;
+      pageSize: number;
+      pages: number;
+      total: number;
+    };
+  };
+  Upload: {
+    Parameters: {
+      accessToken: string;
+      lockId: number;
+      records: string;
+      date: number;
+    };
+    Response: {
+      errcode: number;
+      errmsg: string;
+      description: string;
+    };
+  };
 }
