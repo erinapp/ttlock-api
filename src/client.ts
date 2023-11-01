@@ -13,7 +13,7 @@ export default class Client {
     endpoint: string,
     parameters: any,
     isOauth = false
-  ): Promise<T | any> {
+  ): Promise<T> {
     const { clientId } = this.data!;
 
     const body = parameters;
@@ -32,7 +32,7 @@ export default class Client {
       body: new URLSearchParams(body),
     });
 
-    const responseJSON = await response.json();
+    const responseJSON:any = await response.json();
 
     return responseJSON;
   }

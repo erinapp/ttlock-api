@@ -11,8 +11,8 @@ import type { ClientType } from "./types";
 
 export * from "./types";
 
-export function createClient(parameters: ClientType) {
-  const client = new Client(parameters);
+const createClient = async (parameters: ClientType)=>{
+  const client = new Client(parameters)
 
   const { data } = client;
 
@@ -29,3 +29,6 @@ export function createClient(parameters: ClientType) {
 
   return api;
 }
+
+
+export {createClient}
